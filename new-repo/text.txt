@@ -1,1 +1,2 @@
 1st line from main
+2nd line from text2
