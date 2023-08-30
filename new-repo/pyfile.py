@@ -1,5 +1,7 @@
 a = 5
 b = 6
-sum = a+b
+f = 20
+g = 25
+sum = a+b+f+g
 print "sum of two numbers is " sum
 
