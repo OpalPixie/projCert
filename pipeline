@@ -6,9 +6,9 @@ pipeline {
             agent { label 'target'}
             steps {
                 echo 'Install Puppet'
-                rpm --import http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
-                rpm -Uhv http://pkgs.repoforge.org/ruby-shadow/ruby-shadow-1.4.1-2.el6.rf.x86_64.rpm
-                yum --enablerepo=puppetlabs install puppet-server
+                sh "rpm --import http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs"
+                sh "rpm -Uhv http://pkgs.repoforge.org/ruby-shadow/ruby-shadow-1.4.1-2.el6.rf.x86_64.rpm"
+                sh "yum --enablerepo=puppetlabs install puppet-server"
             }
         }
 
