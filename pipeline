@@ -39,8 +39,8 @@ pipeline {
         stage('Git Checkout') {
             agent{ label 'slave'}
             steps {
-                sh "if [ ! -d '/home/jenkins' ]; then git clone https://github.com/Akash26-hub/DevOps-certification.git /home/jenkins/jenkins_slave/workspace/Certification ; fi"
-                sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo git checkout master"
+                sh "if [ ! -d '/home/jenkins' ]; then git clone https://github.com/OpalPixie/projCert.git /home/jenkins ; fi"
+                sh "cd /home/jenkins && sudo git checkout master"
             }
         }
         
@@ -48,7 +48,7 @@ pipeline {
             agent{ label 'slave'}
             steps {
                 sh "sudo docker rm -f webapp || true"
-                sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo docker build -t test ."
+                sh "cd /home/jenkins && sudo docker build -t test ."
                 sh "sudo docker run -it -d --name webapp -p 1998:80 test"
             }
         }
@@ -68,7 +68,7 @@ pipeline {
         stage('Check if selenium test run') {
             agent{ label 'slave'}
             steps {
-		sh "cd /home/jenkins/jenkins_slave/workspace/Certification/"
+		sh "cd /home/jenkins"
 		sh "java -jar certification-project-1.0-SNAPSHOT-jar-with-dependencies.jar --headless"
             	}
             post {
