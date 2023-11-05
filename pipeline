@@ -61,7 +61,7 @@ pipeline {
 				sh "tar -xjf firefox-57.0.tar.bz2"
 				sh "rm -rf /opt/firefox"
 				sh "sudo mv firefox /opt/"
-				sh "sudo mv /usr/bin/firefox /usr/bin/firefox_old"
+				sh "if [ -f /usr/bin/firefox ]; then sudo mv /usr/bin/firefox /usr/bin/firefox_old; fi"
 				sh "sudo ln -s /opt/firefox/firefox /usr/bin/firefox"
             }
         }
