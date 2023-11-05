@@ -37,7 +37,7 @@ pipeline {
             agent{ label 'target'}
             steps {
                 sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/projCert' ]; then sudo git clone https://github.com/OpalPixie/projCert.git /home/jenkins/jenkins_slave/workspace/projCert ; fi"
-                sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo git checkout master"
+                sh "cd /home/jenkins/jenkins_slave/workspace/projCert && sudo git checkout master"
             }
         }
         
