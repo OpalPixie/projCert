@@ -6,7 +6,7 @@ pipeline {
             agent { label 'target'}
             steps {
                 echo 'Install Puppet'
-		sh "sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm"
+		sh "sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-9.noarch.rpm"
 		sh "sudo yum -y reinstall puppetserver"
             }
         }
