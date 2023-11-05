@@ -36,7 +36,7 @@ pipeline {
         stage('Git Checkout') {
             agent{ label 'target'}
             steps {
-                sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/Certification' ]; then sudo git clone https://github.com/OpalPixie/projCert.git/DevOps-certification.git /home/jenkins/jenkins_slave/workspace/Certification ; fi"
+                sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/Certification' ]; then sudo git clone https://github.com/OpalPixie/projCert.git /home/jenkins/jenkins_slave/workspace/projCert ; fi"
                 sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo git checkout master"
             }
         }
