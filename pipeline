@@ -26,21 +26,25 @@ pipeline {
                 sh "sudo systemctl enable puppet"
             }
         }
-
-        stage('Install Docker on slave through puppet') {
-            agent{ label 'target'}
-            steps {
-		sh "sudo /opt/puppetlabs/bin/puppet module install garethr-docker"		
-            }
-        }
-
-        stage('Git Checkout') {
+	
+	stage('Git Checkout') {
             agent{ label 'target'}
             steps {
                 sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/projCert' ]; then sudo git clone https://github.com/OpalPixie/projCert.git /home/jenkins/jenkins_slave/workspace/projCert ; fi"
                 sh "cd /home/jenkins/jenkins_slave/workspace/projCert && sudo git checkout master"
             }
         }
+
+        stage('Install Docker on slave through puppet') {
+            agent{ label 'target'}
+            steps {
+		sh "sudo /opt/puppetlabs/bin/puppet module install garethr-docker"
+                sh "sudo /opt/puppetlabs/bin/puppet apply /home/jenkins/jenkins_slave/workspace/projCert/website/dockerce.pp"
+
+            }
+        }
+
+        
         
         stage('Docker Build and Run') {
             agent{ label 'target'}
