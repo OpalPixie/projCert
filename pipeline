@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('install puppet on slave') {
-            agent { label 'master'}
+            agent any
            steps {
                 echo 'Install Puppet'
                
