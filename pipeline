@@ -29,14 +29,14 @@ pipeline {
             agent{ label 'target'}
             steps {
                 sh "sudo /opt/puppetlabs/bin/puppet module install garethr-docker"
-                sh "sudo /opt/puppetlabs/bin/puppet apply /home/jenkins/jenkins_slave/workspace/Certification/dockerce.pp"
+                ##sh "sudo /opt/puppetlabs/bin/puppet apply /home/jenkins/jenkins_slave/workspace/Certification/dockerce.pp"
             }
         }
 
         stage('Git Checkout') {
             agent{ label 'target'}
             steps {
-                sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/Certification' ]; then git clone https://github.com/Akash26-hub/DevOps-certification.git /home/jenkins/jenkins_slave/workspace/Certification ; fi"
+                sh "if [ ! -d '/home/jenkins/jenkins_slave/workspace/Certification' ]; then git clone https://github.com/OpalPixie/projCert.git/DevOps-certification.git /home/jenkins/jenkins_slave/workspace/Certification ; fi"
                 sh "cd /home/jenkins/jenkins_slave/workspace/Certification && sudo git checkout master"
             }
         }
