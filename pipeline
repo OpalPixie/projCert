@@ -30,7 +30,7 @@ pipeline {
             agent{ label 'target'}
             steps {
                 sh "sudo yum install yum-utils device-mapper-persistent-data lvm2"
-		sh "sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo"
+		sh "sudo yum config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo"
 		sh "sudo yum install docker-ce"
 		sh "sudo /opt/puppetlabs/bin/puppet module install garethr-docker"		
             }
