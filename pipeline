@@ -46,6 +46,8 @@ pipeline {
         stage('Docker Build and Run') {
             agent{ label 'target'}
             steps {
+		sh "sudo yum install docker -y"
+		sh "sudo service docker start"
 		sh "sudo docker rm -f webapp || true"
                 sh "cd /home/jenkins/jenkins_slave/workspace/projCert && sudo docker build -t test ."
                 sh "sudo docker run -it -d --name webapp -p 1998:80 test"
