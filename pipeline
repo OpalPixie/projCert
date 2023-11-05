@@ -8,6 +8,7 @@ pipeline {
                 echo 'Install Puppet'
 		sh "sudo yum -y remove puppet5-release-5.0.0-14.cisco_wrlinux5.noarch"
 		sh "sudo rpm -ivh https://yum.puppetlabs.com/puppet5-release-cisco-wrlinux-5.noarch.rpm"
+		sh "sudo yum-config-manager --disable docker-ce-stable"
 		sh "sudo yum -y install puppetserver"
             }
         }
