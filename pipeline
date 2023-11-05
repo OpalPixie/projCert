@@ -6,7 +6,6 @@ pipeline {
             agent { label 'slave'}
             steps {
                 echo 'Install Puppet'
-                sh "sudo apt update"
                 sh "sudo apt install -y puppet-agent"
             }
         }
