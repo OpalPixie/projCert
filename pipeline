@@ -6,11 +6,9 @@ pipeline {
             agent { label 'target'}
             steps {
                 echo 'Install Puppet'
-                sh "wget -N -O 'puppet.deb' https://apt.puppetlabs.com/puppet6-release-bionic.deb"
-                sh "chmod 755 puppet.deb"
-                sh "sudo dpkg -i puppet.deb"
-                sh "sudo apt-get update"
-                sh "sudo apt-get install -y puppet-agent"
+               rpm --import http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+               rpm -Uhv http://pkgs.repoforge.org/ruby-shadow/ruby-shadow-1.4.1-2.el6.rf.x86_64.rpm
+               yum --enablerepo=puppetlabs install puppet-server
             }
         }
 
