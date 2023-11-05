@@ -29,8 +29,6 @@ pipeline {
         stage('Install Docker on slave through puppet') {
             agent{ label 'target'}
             steps {
-                sh "sudo yum install yum-utils device-mapper-persistent-data lvm2"
-		sh "sudo yum install docker-ce"
 		sh "sudo /opt/puppetlabs/bin/puppet module install garethr-docker"		
             }
         }
