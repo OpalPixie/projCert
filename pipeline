@@ -6,7 +6,7 @@ pipeline {
             agent { label 'target'}
             steps {
                 echo 'Install Puppet'
-		sh "sudo yum remove puppet5-release-cisco-wrlinux-5.noarch.rpm"
+		sh "sudo yum remove puppet5-release-cisco-wrlinux-5.noarch"
 		sh "sudo rpm -ivh https://yum.puppetlabs.com/puppet5-release-cisco-wrlinux-5.noarch.rpm"
 		sh "sudo yum -y reinstall puppetserver"
             }
