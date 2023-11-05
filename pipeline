@@ -2,7 +2,8 @@ pipeline {
     agent none
     stages {
         stage('install puppet on slave') {
-            steps {
+            agent { label 'target'}
+           steps {
                 echo 'Install Puppet'
                 sh "wget -N -O 'puppet.deb' https://apt.puppetlabs.com/puppet6-release-bionic.deb"
                 sh "chmod 755 puppet.deb"
@@ -13,6 +14,7 @@ pipeline {
         }
 
         stage('configure and start puppet') {
+             agent { label 'slave'}
             steps {
                 echo 'configure puppet'
                 sh "mkdir -p /etc/puppetlabs/puppet"
